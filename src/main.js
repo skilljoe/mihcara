@@ -76,7 +76,7 @@ document.querySelector('#app').innerHTML = `
             <a class="text-link" href="#work">Explore the work <span>↗</span></a>
           </div>
           <div class="hero-notes" aria-label="Areas of work">
-            <span>Jamaica</span><span>•</span><span>UK</span><span>•</span><span>Everywhere ideas travel</span>
+            <span>Jamaica</span><span>•</span><span>UK</span><span>•</span><span>Canada</span><span>•</span><span>Everywhere ideas travel</span>
           </div>
         </div>
         <div class="hero-visual">
@@ -109,7 +109,7 @@ document.querySelector('#app').innerHTML = `
         </div>
         <div class="story-stats">
           <div><strong>01</strong><span>Unshakeable<br />problem solver</span></div>
-          <div><strong>02</strong><span>Home bases<br />Jamaica & the UK</span></div>
+          <div><strong>03</strong><span>Home bases<br />Jamaica, UK & Canada</span></div>
           <div><strong>∞</strong><span>Ways to turn<br />a vision real</span></div>
         </div>
       </section>
