@@ -87,7 +87,7 @@ document.querySelector('#app').innerHTML = `
       </section>
 
       <section class="ticker" aria-label="Cara Burke areas of work">
-        <div class="ticker-track"><span>Entertainment</span><b>✦</b><span>Culture</span><b>✦</b><span>Production</span><b>✦</b><span>Storytelling</span><b>✦</b><span>Entertainment</span><b[...]
+        <div class="ticker-track"><span>Entertainment</span><b>✦</b><span>Culture</span><b>✦</b><span>Production</span><b>✦</b><span>Storytelling</span><b>✦</b><span>Entertainment</span><b>✦</b><span>Culture</span><b>✦</b><span>Production</span><b>✦</b><span>Storytelling</span></div>
       </section>
 
       <section class="story section-pad" id="story">
