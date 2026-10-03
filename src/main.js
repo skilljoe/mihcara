@@ -99,7 +99,7 @@ document.querySelector('#app').innerHTML = `
           </div>
           <div class="story-copy">
             <p class="lead">Cara has built a life around making things happen for other people — artists, audiences, partners, and now, young readers.</p>
-            <p>Her work sits at the intersection of strategy and care. She can be the person in the room shaping the big idea, the person backstage fixing the small thing, or the person making su[...]
+            <p>Her work sits at the intersection of strategy and care. She can be the person in the room shaping the big idea, the person backstage fixing the small thing, or the person making sure the details land with care.</p>
             <p>It is a home for the work that has a little more heart in it: the ideas, stories, and experiences that stay with you.</p>
             <a class="text-link coral-link" href="#contact">Work with Cara <span>↗</span></a>
           </div>
@@ -126,9 +126,9 @@ document.querySelector('#app').innerHTML = `
             <div class="section-kicker"><span>03</span><span class="line"></span><span>For little dreamers</span></div>
             <p class="eyebrow">A new chapter</p>
             <h2>There is magic in seeing <em>yourself</em> in the story.</h2>
-            <p class="book-description">Cara's children's book is a joyful first look at a story made to encourage confidence, imagination, and the beautiful belief that your ideas deserve ro[...]
+            <p class="book-description">Cara's children's book is a joyful first look at a story made to encourage confidence, imagination, and the beautiful belief that your ideas deserve room to grow.</p>
             <div class="placeholder-note"><span>EDITABLE DRAFT</span> Replace with the final book title, blurb, age range, cover, and purchase link when ready.</div>
-            <div class="book-actions"><a class="button button-coral" href="#contact">Be first to know <span>↗</span></a><a class="text-link" href="#contact">Book enquiries <span>↗</span></a><[...]
+            <div class="book-actions"><a class="button button-coral" href="#contact">Be first to know <span>↗</span></a><a class="text-link" href="#contact">Book enquiries <span>↗</span></a></div>
           </div>
           <div class="book-art" aria-label="Placeholder book cover artwork">
             <div class="book-sun"></div><div class="book-cloud cloud-one"></div><div class="book-cloud cloud-two"></div>
@@ -152,22 +152,22 @@ document.querySelector('#app').innerHTML = `
           <p>Lighting packs for the moments that need to feel bigger, warmer, and unmistakably yours — from live events to intimate productions.</p>
         </div>
         <div class="pack-list">
-          <article class="pack-card pack-featured"><div class="pack-meta"><span>01 / Signature</span><span>For the full picture</span></div><h3>The Spotlight Pack</h3><p>A flexible lighting setup[...]
-          <article class="pack-card"><div class="pack-meta"><span>02 / Intimate</span><span>For close-up magic</span></div><h3>The Glow Pack</h3><p>Warm, flattering atmosphere for dinners, launch[...]
-          <article class="pack-card"><div class="pack-meta"><span>03 / Custom</span><span>For your brief</span></div><h3>The Make It Happen Pack</h3><p>A tailored production conversation for an i[...]
+          <article class="pack-card pack-featured"><div class="pack-meta"><span>01 / Signature</span><span>For the full picture</span></div><h3>The Spotlight Pack</h3><p>A flexible lighting setup for productions, launches, panels, and events that need the full picture.</p><div class="pack-bottom"><strong>Full production setup</strong><a href="#contact">Enquire ↗</a></div></article>
+          <article class="pack-card"><div class="pack-meta"><span>02 / Intimate</span><span>For close-up magic</span></div><h3>The Glow Pack</h3><p>Warm, flattering atmosphere for dinners, launches, intimate gatherings, and close-up moments.</p><div class="pack-bottom"><strong>Intimate event setup</strong><a href="#contact">Enquire ↗</a></div></article>
+          <article class="pack-card"><div class="pack-meta"><span>03 / Custom</span><span>For your brief</span></div><h3>The Make It Happen Pack</h3><p>A tailored production conversation for an idea with its own shape, pace, and point of view.</p><div class="pack-bottom"><strong>Custom brief</strong><a href="#contact">Enquire ↗</a></div></article>
         </div>
         <div class="placeholder-note dark-note"><span>EDITABLE DRAFT</span> Replace package names, exact inclusions, pricing, service area, and booking link when confirmed.</div>
       </section>
 
       <section class="contact section-pad" id="contact">
         <div class="contact-panel">
-          <div class="contact-copy"><p class="eyebrow light-text">The next good idea</p><h2>Tell me what you're<br /><em>making.</em></h2><p>For collaborations, book updates, events, lighting p[...]
+          <div class="contact-copy"><p class="eyebrow light-text">The next good idea</p><h2>Tell me what you're<br /><em>making.</em></h2><p>For collaborations, book updates, events, lighting plans, or a good idea that needs a little momentum.</p></div>
           <div class="contact-actions">
             <form class="contact-form" id="contact-form">
-              <div class="form-row"><label><span>Your name</span><input name="name" type="text" autocomplete="name" placeholder="Your name" required /></label><label><span>Email address</span><in[...]
-              <label><span>What can Cara help with?</span><select name="topic" required><option value="" disabled selected>Choose a conversation</option><option>Children's book</option><option>[...]
+              <div class="form-row"><label><span>Your name</span><input name="name" type="text" autocomplete="name" placeholder="Your name" required /></label><label><span>Email address</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label></div>
+              <label><span>What can Cara help with?</span><select name="topic" required><option value="" disabled selected>Choose a conversation</option><option>Children's book</option><option>Lighting packs</option><option>Events & production</option><option>Collaboration</option><option>Other</option></select></label>
               <label><span>Tell us a little more</span><textarea name="message" rows="4" placeholder="A few details about your idea..." required></textarea></label>
-              <div class="form-submit-row"><button class="button button-coral" type="submit">Send enquiry <span>↗</span></button><p class="form-note">This draft opens your email app with the me[...]
+              <div class="form-submit-row"><button class="button button-coral" type="submit">Send enquiry <span>↗</span></button><p class="form-note">This draft opens your email app with the message ready to send.</p></div>
               <p class="form-success" role="status" aria-live="polite"></p>
             </form>
           </div>
