@@ -1,6 +1,6 @@
 import './styles.css';
 
-const portrait = '/assets/cara-burke.avif';
+const portrait = './assets/cara-burke.avif';
 
 const services = [
   {
