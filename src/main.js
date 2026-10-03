@@ -31,7 +31,8 @@ const services = [
 ];
 
 const tickerWords = ['Entertainment', 'Culture', 'Production', 'Storytelling'];
-const tickerHalf = tickerWords.map((word) => `<span>${word}</span><b aria-hidden="true">✦</b>`).join('');
+const tickerSet = tickerWords.map((word) => `<span>${word}</span><b aria-hidden="true">✦</b>`).join('');
+const tickerHalf = tickerSet.repeat(4);
 
 const serviceMarkup = services.map((service) => `
   <article class="service-card">
