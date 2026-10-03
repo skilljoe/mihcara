@@ -16,6 +16,13 @@
     <meta name="twitter:description" content="Cara Burke is an entertainment consultant, producer, author, and quiet force for good things — on stage, behind the scenes, and everywhere in between." />
     <meta name="twitter:image" content="https://skilljoe.github.io/mihcara/assets/cara-burke.avif" />
     <title>Cara Burke — Miss Make It Happen</title>
+    <script>
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      if (!window.location.hash) window.scrollTo(0, 0);
+      window.addEventListener('pageshow', () => {
+        if (!window.location.hash) window.scrollTo(0, 0);
+      });
+    </script>
   </head>
   <body>
     <div id="app"></div>
