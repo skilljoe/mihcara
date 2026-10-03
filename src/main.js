@@ -162,7 +162,15 @@ document.querySelector('#app').innerHTML = `
       <section class="contact section-pad" id="contact">
         <div class="contact-panel">
           <div class="contact-copy"><p class="eyebrow light-text">The next good idea</p><h2>Tell me what you’re<br /><em>making.</em></h2><p>For collaborations, book updates, events, lighting packs, or a very good idea that needs a home.</p></div>
-          <div class="contact-actions"><a class="button button-coral" href="mailto:hello@caraburke.com">Start a conversation <span>↗</span></a><div class="contact-placeholder"><span>CONTACT PLACEHOLDER</span><strong>hello@caraburke.com</strong><small>Swap for Cara’s preferred email / booking link</small></div></div>
+          <div class="contact-actions">
+            <form class="contact-form" id="contact-form">
+              <div class="form-row"><label><span>Your name</span><input name="name" type="text" autocomplete="name" placeholder="Your name" required /></label><label><span>Email address</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label></div>
+              <label><span>What can Cara help with?</span><select name="topic" required><option value="" disabled selected>Choose a conversation</option><option>Children’s book</option><option>Lighting packs</option><option>Event or production</option><option>Entertainment consulting</option><option>Something else</option></select></label>
+              <label><span>Tell us a little more</span><textarea name="message" rows="4" placeholder="A few details about your idea..." required></textarea></label>
+              <div class="form-submit-row"><button class="button button-coral" type="submit">Send enquiry <span>↗</span></button><p class="form-note">This draft opens your email app with the message prepared.</p></div>
+              <p class="form-success" role="status" aria-live="polite"></p>
+            </form>
+          </div>
         </div>
         <div class="contact-footer"><span>© 2026 Cara Burke</span><span>Made with purpose, heart & a little sparkle ✦</span><a href="#top">Back to top ↑</a></div>
       </section>
@@ -183,4 +191,18 @@ document.querySelectorAll('.site-nav a').forEach((link) => {
     menuToggle.setAttribute('aria-expanded', 'false');
     nav.classList.remove('is-open');
   });
+});
+
+const contactForm = document.querySelector('#contact-form');
+const formSuccess = document.querySelector('.form-success');
+contactForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!contactForm.reportValidity()) return;
+
+  const data = new FormData(contactForm);
+  const subject = `${data.get('topic')} enquiry from ${data.get('name')}`;
+  const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nConversation: ${data.get('topic')}\n\n${data.get('message')}`;
+  window.location.href = `mailto:hello@caraburke.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  formSuccess.textContent = 'Your email draft is ready — thank you.';
+  contactForm.reset();
 });

@@ -158,7 +158,21 @@ h1 em, h2 em { color: var(--coral-dark); font-style: italic; }
 .contact-panel { align-items: end; border-bottom: 1px solid rgba(255,255,255,.2); display: grid; gap: 10vw; grid-template-columns: 1fr 1fr; padding-bottom: 90px; }
 .contact-copy h2 { font-size: clamp(52px, 6vw, 86px); line-height: .89; margin-bottom: 25px; }
 .contact-copy h2 em { color: var(--coral); }.contact-copy > p:last-child { color: rgba(255,255,255,.6); font-size: 14px; line-height: 1.7; max-width: 350px; }
-.contact-actions { padding-bottom: 8px; }.contact-placeholder { border-top: 1px solid rgba(255,255,255,.2); display: flex; flex-direction: column; margin-top: 45px; padding-top: 17px; }.contact-placeholder span { color: var(--sun); font-size: 8px; font-weight: 700; letter-spacing: .15em; margin-bottom: 7px; }.contact-placeholder strong { font-family: var(--serif); font-size: 23px; font-weight: 500; }.contact-placeholder small { color: rgba(255,255,255,.4); font-size: 10px; margin-top: 7px; }
+.contact-actions { padding-bottom: 8px; }
+.contact-form { display: flex; flex-direction: column; gap: 17px; }
+.contact-form label { display: flex; flex-direction: column; gap: 8px; }
+.contact-form label > span { color: var(--sun); font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.contact-form input, .contact-form select, .contact-form textarea { background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,.28); border-radius: 0; color: var(--white); font: 14px var(--sans); outline: 0; padding: 8px 0 11px; transition: border-color .2s ease; width: 100%; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,.42); }
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { border-color: var(--coral); }
+.contact-form select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--sun) 50%), linear-gradient(135deg, var(--sun) 50%, transparent 50%); background-position: calc(100% - 7px) 14px, calc(100% - 2px) 14px; background-repeat: no-repeat; background-size: 5px 5px, 5px 5px; cursor: pointer; }
+.contact-form select:invalid { color: rgba(255,255,255,.42); }.contact-form select option { background: var(--ink); color: var(--white); }
+.contact-form textarea { min-height: 93px; resize: vertical; }
+.form-row { display: grid; gap: 20px; grid-template-columns: 1fr 1fr; }
+.form-submit-row { align-items: center; display: flex; flex-wrap: wrap; gap: 18px; margin-top: 5px; }
+.form-submit-row .button { border: 0; cursor: pointer; }
+.form-note { color: rgba(255,255,255,.4); font-size: 10px; line-height: 1.4; margin: 0; max-width: 185px; }
+.form-success { color: var(--sun); font-size: 11px; line-height: 1.5; margin: 0; min-height: 17px; }
 .contact-footer { align-items: center; color: rgba(255,255,255,.45); display: flex; font-size: 10px; justify-content: space-between; letter-spacing: .06em; padding-top: 24px; }.contact-footer a { color: var(--sun); }
 
 @media (max-width: 900px) {
@@ -166,12 +180,12 @@ h1 em, h2 em { color: var(--coral-dark); font-style: italic; }
   .story-grid { gap: 45px; grid-template-columns: 1fr; margin-bottom: 65px; }.story-copy { max-width: 640px; }.work-intro { align-items: start; flex-direction: column; gap: 25px; }.work-intro > p { max-width: 470px; }
   .book-paper { grid-template-columns: 1fr; }.book-art { min-height: 480px; }.book-copy .section-kicker { margin-bottom: 62px; }
   .pack-list { grid-template-columns: 1fr; }.pack-card { min-height: 235px; }.pack-card h3, .pack-card p { max-width: 400px; }
-  .lighting-heading, .contact-panel { gap: 45px; grid-template-columns: 1fr; }.lighting-heading .section-kicker { margin-bottom: 55px; }.lighting-heading > p:last-child { margin: 0; max-width: 500px; }
+  .lighting-heading, .contact-panel { gap: 45px; grid-template-columns: 1fr; }.lighting-heading .section-kicker { margin-bottom: 55px; }.lighting-heading > p:last-child { margin: 0; max-width: 500px; }.contact-actions { max-width: 640px; width: 100%; }
 }
 
 @media (max-width: 650px) {
   .site-header { padding-top: 20px; }.menu-toggle { display: grid; position: relative; z-index: 12; }.site-nav { align-items: stretch; background: var(--paper); box-shadow: 0 16px 25px rgba(32,32,30,.12); display: flex; flex-direction: column; gap: 0; left: 0; opacity: 0; padding: 85px 24px 25px; pointer-events: none; position: absolute; right: 0; top: 0; transform: translateY(-12px); transition: opacity .2s ease, transform .2s ease; }.site-nav.is-open { opacity: 1; pointer-events: auto; transform: translateY(0); }.site-nav a { border-bottom: 1px solid var(--line); padding: 15px 0; }.site-nav .nav-cta { border-bottom: 0; justify-content: space-between; margin-top: 12px; padding: 14px 18px; }
   .hero { min-height: auto; padding-bottom: 90px; }.hero::after { height: 62px; }.hero-deck { font-size: 15px; }.hero-notes { margin-top: 38px; }.hero-visual { height: 500px; margin-top: 44px; }.hero-frame { border-width: 8px; box-shadow: 11px 11px 0 var(--ink); width: 77%; }.hero-sticker { bottom: 3%; height: 94px; right: 0; width: 94px; }.hero-sticker span { font-size: 10px; }.hero-scribble { left: -2%; top: 12%; }.hero-caption { bottom: -13px; right: 0; }
   .story, .book, .lighting { padding-bottom: 78px; padding-top: 78px; }.story-stats { grid-template-columns: 1fr; }.story-stats div { padding: 18px 0; }.story-stats div + div { border-left: 0; border-top: 1px solid var(--line); }.story-stats strong { min-width: 45px; }.service-card { gap: 11px; grid-template-columns: 38px 1fr 23px; padding: 22px 0; }.service-card:hover { padding-left: 8px; padding-right: 8px; }.service-number { font-size: 15px; }.service-card h3 { font-size: 24px; }.service-card p { font-size: 11px; }
-  .book-copy { padding: 45px 26px 55px; }.book-copy .section-kicker { margin-bottom: 60px; }.book-art { min-height: 405px; }.book-cover { height: 280px; width: 195px; }.cover-title { font-size: 40px; margin-top: 52px; }.book-sun { height: 95px; width: 95px; }.contact { padding-top: 78px; }.contact-panel { padding-bottom: 65px; }.contact-footer { align-items: start; flex-direction: column; gap: 14px; }
+  .book-copy { padding: 45px 26px 55px; }.book-copy .section-kicker { margin-bottom: 60px; }.book-art { min-height: 405px; }.book-cover { height: 280px; width: 195px; }.cover-title { font-size: 40px; margin-top: 52px; }.book-sun { height: 95px; width: 95px; }.contact { padding-top: 78px; }.contact-panel { padding-bottom: 65px; }.contact-footer { align-items: start; flex-direction: column; gap: 14px; }.form-row { grid-template-columns: 1fr; }
 }
