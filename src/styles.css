@@ -72,9 +72,15 @@ h1 em, h2 em { color: var(--coral-dark); font-style: italic; }
 .hero-caption strong { color: var(--ink); font-size: 12px; }
 
 .ticker { background: var(--paper); border-bottom: 1px solid var(--line); border-top: 1px solid var(--line); overflow: hidden; padding: 17px 0; white-space: nowrap; }
-.ticker-track { align-items: center; display: inline-flex; gap: 29px; min-width: max-content; }
-.ticker span { font-family: var(--serif); font-size: 19px; font-style: italic; }
-.ticker b { color: var(--coral); font-size: 13px; }
+.ticker-track { display: flex; width: max-content; animation: ticker-scroll 30s linear infinite; }
+.ticker-half { align-items: center; display: inline-flex; gap: 29px; padding-right: 29px; }
+.ticker-half span { font-family: var(--serif); font-size: 19px; font-style: italic; }
+.ticker-half b { color: var(--coral); font-size: 13px; }
+@keyframes ticker-scroll { to { transform: translateX(-50%); } }
+@keyframes drift-soft { 0%, 100% { transform: rotate(-9deg) translateY(0); } 50% { transform: rotate(-9deg) translateY(-9px); } }
+@keyframes float-soft { 0%, 100% { transform: rotate(9deg) translateY(0); } 50% { transform: rotate(9deg) translateY(-11px); } }
+.hero-scribble { animation: drift-soft 9s ease-in-out infinite; }
+.hero-sticker { animation: float-soft 7s ease-in-out infinite; }
 .section-kicker { align-items: center; color: var(--coral-dark); display: flex; font-size: 10px; font-weight: 700; gap: 12px; letter-spacing: .13em; text-transform: uppercase; }
 .section-kicker .line { background: currentColor; display: inline-block; height: 1px; opacity: .65; width: 46px; }
 .section-kicker.light { color: var(--sun); }

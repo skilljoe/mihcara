@@ -30,6 +30,9 @@ const services = [
   }
 ];
 
+const tickerWords = ['Entertainment', 'Culture', 'Production', 'Storytelling'];
+const tickerHalf = tickerWords.map((word) => `<span>${word}</span><b aria-hidden="true">✦</b>`).join('');
+
 const serviceMarkup = services.map((service) => `
   <article class="service-card">
     <span class="service-number">${service.number}</span>
@@ -87,7 +90,7 @@ document.querySelector('#app').innerHTML = `
       </section>
 
       <section class="ticker" aria-label="Cara Burke areas of work">
-        <div class="ticker-track"><span>Entertainment</span><b>✦</b><span>Culture</span><b>✦</b><span>Production</span><b>✦</b><span>Storytelling</span><b>✦</b><span>Entertainment</span><b>✦</b><span>Culture</span><b>✦</b><span>Production</span><b>✦</b><span>Storytelling</span></div>
+        <div class="ticker-track"><div class="ticker-half">${tickerHalf}</div><div class="ticker-half" aria-hidden="true">${tickerHalf}</div></div>
       </section>
 
       <section class="story section-pad" id="story">
