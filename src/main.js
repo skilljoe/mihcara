@@ -70,7 +70,7 @@ document.querySelector('#app').innerHTML = `
         <div class="hero-copy">
           <p class="eyebrow"><span class="eyebrow-dot"></span> The woman behind the moments</p>
           <h1>Big ideas need someone who knows how to <em>make them happen.</em></h1>
-          <p class="hero-deck">Cara Burke is an entertainment consultant, producer, author, and quiet force for good things — on stage, behind the scenes, and everywhere in between.</p>
+          <p class="hero-deck">Cara Burke is an entertainment consultant, producer, and author — the calm, capable force turning bold ideas into unforgettable moments, on stage and behind the scenes.</p>
           <div class="hero-actions">
             <a class="button button-dark" href="#story">Meet Cara <span>↘</span></a>
             <a class="text-link" href="#work">Explore the work <span>↗</span></a>
@@ -103,13 +103,13 @@ document.querySelector('#app').innerHTML = `
           <div class="story-copy">
             <p class="lead">Cara has built a life around making things happen for other people — artists, audiences, partners, and now, young readers.</p>
             <p>Her work sits at the intersection of strategy and care. She can be the person in the room shaping the big idea, the person backstage fixing the small thing, or the person making sure the details land with care.</p>
-            <p>It is a home for the work that has a little more heart in it: the ideas, stories, and experiences that stay with you.</p>
+            <p>This is home for work with a little more heart in it: the ideas, stories, and experiences that stay with you.</p>
             <a class="text-link coral-link" href="#contact">Work with Cara <span>↗</span></a>
           </div>
         </div>
         <div class="story-stats">
           <div><strong>01</strong><span>Unshakeable<br />problem solver</span></div>
-          <div><strong>02</strong><span>Countries crossed<br />for great work</span></div>
+          <div><strong>02</strong><span>Home bases<br />Jamaica & the UK</span></div>
           <div><strong>∞</strong><span>Ways to turn<br />a vision real</span></div>
         </div>
       </section>
@@ -129,7 +129,7 @@ document.querySelector('#app').innerHTML = `
             <div class="section-kicker"><span>03</span><span class="line"></span><span>For little dreamers</span></div>
             <p class="eyebrow">A new chapter</p>
             <h2>There is magic in seeing <em>yourself</em> in the story.</h2>
-            <p class="book-description">Cara's children's book is a joyful first look at a story made to encourage confidence, imagination, and the beautiful belief that your ideas deserve room to grow.</p>
+            <p class="book-description">A joyful story that builds confidence, sparks imagination, and shows young readers their ideas deserve room to grow.</p>
             <div class="placeholder-note"><span>EDITABLE DRAFT</span> Replace with the final book title, blurb, age range, cover, and purchase link when ready.</div>
             <div class="book-actions"><a class="button button-coral" href="#contact">Be first to know <span>↗</span></a><a class="text-link" href="#contact">Book enquiries <span>↗</span></a></div>
           </div>
