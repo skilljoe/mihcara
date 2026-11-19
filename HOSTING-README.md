@@ -1,24 +1,28 @@
 # Cara Burke website
 
-This package contains the source files and assets for Cara Burke’s personal website draft.
+This is a Vite + vanilla JavaScript multi-page site for GitHub Pages. It builds eight directory-style pages: Home, About, Services, Portfolio, Books, Contact, Privacy, and Terms.
 
-## Run locally
+## Build locally
 
-1. Install Node.js 18 or newer.
-2. Open a terminal in this folder.
-3. Run `npm install`.
-4. Run `npm run dev` to preview locally.
-5. Run `npm run build` to create the production files in `dist/`.
+```bash
+npm ci
+npm run build
+npx vite preview --port 4173
+```
 
-## Host it
+The production output is `dist/` and is deployed by the existing GitHub Actions workflow.
 
-This is a static Vite site. It can be hosted on Netlify, Vercel, Cloudflare Pages, GitHub Pages, or any standard static web host. The usual configuration is:
+## Edit content
 
-- Build command: `npm run build`
-- Output directory: `dist`
+Structured content lives in `src/content/`:
 
-For a simple upload-only host, run `npm run build` and upload the contents of `dist/`.
+- `site.json` — phone, Amazon link, and future business email/Formspree endpoint.
+- `packages.json` — the nine production packages, taglines, descriptions, and categories.
+- `books.json` — publication names, descriptions, and links.
+- `portfolio.json` — gallery categories and the honest coming-soon state.
 
-## Before launch
+Add official book covers and production photos only after Cara supplies approved assets. The site intentionally does not invent technical specifications, prices, testimonials, social handles, or a business email.
 
-Replace the placeholder children’s-book title, cover, description, purchase link, and age range. Confirm the lighting-pack names, inclusions, pricing, service area, and booking workflow. Replace `hello@caraburke.com` in `src/main.js` with Cara’s preferred contact address. The current contact form validates in the browser and opens a pre-addressed email draft; it does not store submissions in a database.
+## Form delivery
+
+The current contact form uses a honeypot and progressive disclosure. Until `formEndpoint` and `businessEmail` are supplied in `src/content/site.json`, submissions show an honest phone-confirmation message rather than claiming delivery or opening a blank mail draft. A hosted form endpoint can be connected later without adding a payment flow.

@@ -1,27 +1,17 @@
-# Cara Burke — Brand-led website redesign
+# Cara Burke — official brief implementation
 
-## Design direction
-- **Design movement:** premium entertainment editorial with burgundy tailoring, silver production details, off-white breathing space, and black contrast.
-- **Core principles:** credible but expressive; conversion-forward; artist-focused; clear enough for a busy event organizer to act quickly.
-- **Color philosophy:** burgundy owns the brand and signals confidence; off-white creates editorial calm; silver adds production polish; black anchors technical detail and contrast.
-- **Layout paradigm:** asymmetrical editorial sections, oversized serif statements, package cards grouped by production category, and a strong booking close.
-- **Signature elements:** script-style Cara wordmark, silver rules, burgundy ribbon accents, and high-contrast package cards.
-- **Interaction:** anchor navigation, package detail accordions, package buttons that pre-fill the booking form, and a mobile menu.
-- **Animation:** restrained hover lift and smooth anchor movement; no continuous motion that can make the page feel unstable.
-- **Typography:** Playfair Display for authority and warmth, Parisienne for the personal wordmark, DM Sans for labels and forms.
-- **Brand essence:** Cara W. Burke turns creative ambition into performance-ready experiences and meaningful publications. Personality: credible, creative, supportive.
-- **Brand voice:** direct, warm, premium. Example lines: “Bringing your vision to life.” / “Let’s create something extraordinary.”
-- **Wordmark concept:** handwritten “Cara” paired with a spaced BURKE lockup and MAKE IT HAPPEN descriptor.
-- **Signature brand color:** Burgundy `#6A0D2B`.
+## Direction
 
-## Project structure
-- `index.html` — static shell, metadata, and reload behavior.
-- `src/main.js` — page sections, nine production packages, publication cards, package selection, mobile menu, and mailto booking form.
-- `src/styles.css` — responsive brand system and all layout styles.
-- `public/assets/cara-burke.avif` — supplied portrait.
-- `public/manus-routes.json` — home route declaration.
+Build the official six-page Cara Burke website plus Privacy Policy and Booking Terms pages inside the existing Vite repository. The mood board governs a premium system built from burgundy `#6A0D2B`, grey `#A5A5A5`, off-white `#F8F6F6`, black `#000000`, and silver `#C0C0C0`. Keep Fraunces and DM Sans, the supplied portrait, honest coming-soon states, and no stock imagery.
 
-## Content constraints
-- Package technical specifications, pricing, official book covers, portfolio imagery, testimonials, and confirmed social links remain clearly marked as future additions where not supplied.
-- A Little Piece of Jamaica links to the supplied Amazon listing; other publication actions remain enquiry-based until Cara supplies ordering links.
-- The booking form is a front-end draft that opens a prefilled email; backend delivery and acknowledgment can be connected later.
+## Architecture
+
+Eight directory-style HTML entry points are compiled by Vite: `/`, `/about/`, `/services/`, `/portfolio/`, `/books/`, `/contact/`, `/privacy/`, and `/terms/`. `src/main.js` renders a shared header/footer plus page-specific sections from `body[data-page]` and structured JSON. `src/content/site.json`, `packages.json`, `books.json`, and `portfolio.json` hold editable content and intentionally empty future integrations. `src/styles.css` owns the shared responsive visual system.
+
+## Functional decisions
+
+Services include exact brief copy for all nine packages. Package details expand inline. Booking buttons send visitors to `/contact/` with the selected package and category in the query string. The contact form reveals production fields for package, event, or custom-quote inquiries, includes a honeypot, and shows an honest phone fallback while no form endpoint or business email is configured. No checkout, cart, analytics, fake testimonials, invented specs, or unapproved contact channels are added.
+
+## Delivery
+
+The feature is being built on a dedicated branch, with GitHub Pages using `base: '/mihcara/'` and all eight entry points declared in `vite.config.js`. The branch should be reviewed and merged by the repository owner.
