@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: read
 
 concurrency:
   group: pages
@@ -43,6 +44,21 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
+
+      - name: Wait for the Pages artifact to be visible
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for i in $(seq 1 24); do
+            if gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" --jq '.artifacts[] | select(.name == "github-pages") | .id' | grep -q .; then
+              echo "Pages artifact is visible to the API, continuing to deploy."
+              exit 0
+            fi
+            echo "Pages artifact not visible yet (attempt $i of 24), waiting 5s..."
+            sleep 5
+          done
+          echo "Pages artifact never became visible to the API." >&2
+          exit 1
 
       - name: Deploy to GitHub Pages
         id: deployment
