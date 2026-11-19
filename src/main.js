@@ -2,211 +2,105 @@ import './styles.css';
 
 const portrait = './assets/cara-burke.avif';
 
-const services = [
+const packageGroups = [
   {
-    number: '01',
-    title: 'Entertainment consulting',
-    text: 'Big-picture thinking, practical problem solving, and a calm head when the room gets loud.'
+    id: 'lighting',
+    label: 'Lighting packages',
+    intro: 'Set the rhythm. Light up the stage.',
+    packages: [
+      { name: 'Pacemaker', tagline: 'Set the Rhythm. Light Up the Stage.', text: 'An entry-level lighting solution for smaller performances, intimate venues, and emerging artists.', tone: 'burgundy' },
+      { name: 'Extraordinary', tagline: 'Go Beyond Ordinary.', text: 'An enhanced lighting experience designed to create greater visual impact for concerts and showcases.', tone: 'silver' },
+      { name: 'Showtime Lite', tagline: 'Your Moment. Your Stage. Your Showtime.', text: 'A coordinated professional lighting presentation for artists and event organizers.', tone: 'black' }
+    ]
   },
   {
-    number: '02',
-    title: 'Booking & touring',
-    text: 'The right people, the right room, and the right details to move talent across borders.'
+    id: 'visuals',
+    label: 'LED screens & visual packages',
+    intro: 'Make the image impossible to miss.',
+    packages: [
+      { name: 'Blink', tagline: 'Capture Their Attention.', text: 'A visual display package for smaller events, performances, and presentations.', tone: 'silver' },
+      { name: 'Stardom', tagline: 'Put Your Performance in the Spotlight.', text: 'An engaging visual backdrop for concerts, showcases, and entertainment productions.', tone: 'burgundy' },
+      { name: 'Captivate', tagline: "Create a Visual Experience They Won't Forget.", text: 'A strong visual presence for large-scale performances and special entertainment events.', tone: 'black' }
+    ]
   },
   {
-    number: '03',
-    title: 'Artist development',
-    text: 'Building stronger careers by shaping the strategy behind the spotlight.'
-  },
-  {
-    number: '04',
-    title: 'Events & production',
-    text: 'From first sketch to final cue, making sure the experience lands exactly as imagined.'
-  },
-  {
-    number: '05',
-    title: 'Stories & authorship',
-    text: 'Creating space for the next generation to see themselves in the stories they love.'
+    id: 'sound',
+    label: 'Sound packages',
+    intro: 'Feel every beat. Hear every moment.',
+    packages: [
+      { name: 'Your Sound', tagline: 'Your Vision. Your Sound.', text: 'A sound solution for artists with specific audio preferences or production requirements.', tone: 'black' },
+      { name: 'Our Sound', tagline: 'Professional Sound. Exceptional Experiences.', text: 'A coordinated audio solution for artists and event organizers.', tone: 'silver' },
+      { name: 'Ultimate Sound', tagline: 'Feel Every Beat. Hear Every Moment.', text: 'A comprehensive audio production setup for larger performances, subject to venue requirements.', tone: 'burgundy' }
+    ]
   }
 ];
 
-const tickerWords = ['Entertainment', 'Culture', 'Production', 'Storytelling'];
-const tickerSet = tickerWords.map((word) => `<span>${word}</span><b aria-hidden="true">✦</b>`).join('');
-const tickerHalf = tickerSet.repeat(4);
-
-const serviceMarkup = services.map((service) => `
-  <article class="service-card">
-    <span class="service-number">${service.number}</span>
-    <div>
-      <h3>${service.title}</h3>
-      <p>${service.text}</p>
+const allPackages = packageGroups.flatMap(group => group.packages.map(item => ({ ...item, category: group.label })));
+const packageOptions = allPackages.map(item => `<option value="${item.name}">${item.name} — ${item.category}</option>`).join('');
+const packageMarkup = packageGroups.map(group => `
+  <section class="package-family" id="${group.id}">
+    <div class="package-family-head"><span class="eyebrow">${group.label}</span><p>${group.intro}</p></div>
+    <div class="package-grid">
+      ${group.packages.map(item => `
+        <article class="package-card tone-${item.tone}">
+          <div class="package-index">${String(group.packages.indexOf(item) + 1).padStart(2, '0')}</div>
+          <p class="package-category">${group.label}</p>
+          <h3>${item.name}</h3>
+          <p class="package-tagline">${item.tagline}</p>
+          <details><summary>View package details</summary><p>${item.text} Final equipment, technical specifications, pricing, and setup requirements will be confirmed with Cara.</p></details>
+          <button class="package-book" data-package="${item.name}">Book this package <span>↗</span></button>
+        </article>`).join('')}
     </div>
-    <span class="service-arrow" aria-hidden="true">↗</span>
-  </article>
-`).join('');
+  </section>`).join('');
 
-document.querySelector('#app').innerHTML = `
-  <div class="site-shell">
+const galleryTiles = [
+  ['Live performance', 'Stage lighting', 'tile-stage'],
+  ['Production detail', 'Behind the scenes', 'tile-console'],
+  ['Visual display', 'LED & atmosphere', 'tile-visual'],
+  ['Sound experience', 'Every beat matters', 'tile-sound']
+].map(([label, title, cls]) => `<article class="gallery-tile ${cls}"><span>${label}</span><strong>${title}</strong><i aria-hidden="true">✦</i></article>`).join('');
+
+const books = [
+  { title: 'A Little Piece of Jamaica', type: 'Culture & identity', text: 'A publication celebrating Jamaica and its unique cultural identity.', cta: 'Buy on Amazon', href: 'https://www.amazon.com/dp/1067345906', cls: 'book-jamaica' },
+  { title: 'Prayed in Kings Out', type: 'Journal for Black mothers & sons', text: 'A journal creating space for reflection, connection, prayer, and meaningful conversations.', cta: 'Explore the journal', href: '#contact', cls: 'book-journal' },
+  { title: 'Little Jamaican Chef', type: 'Cookbook', text: 'A cookbook celebrating Jamaican food, cooking, and culinary traditions.', cta: 'Explore the cookbook', href: '#contact', cls: 'book-chef' }
+].map(book => `<article class="publication-card ${book.cls}"><div class="publication-cover"><span>CARA W. BURKE</span><strong>${book.title}</strong><i>Publication preview</i></div><p class="eyebrow">${book.type}</p><h3>${book.title}</h3><p>${book.text}</p><a class="text-link" href="${book.href}" ${book.href.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''}>${book.cta} <span>↗</span></a></article>`).join('');
+
+const app = document.querySelector('#app');
+app.innerHTML = `
+  <div class="site-shell" id="top">
     <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="Cara Burke home">
-        <span class="wordmark-star">✦</span>
-        <span class="wordmark-name">CARA</span>
-        <span class="wordmark-sub">MAKE IT HAPPEN</span>
-      </a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
-        <span></span><span></span>
-        <span class="sr-only">Open menu</span>
-      </button>
+      <a class="wordmark" href="#top" aria-label="Cara Burke home"><span class="wordmark-script">Cara</span><span class="wordmark-last">BURKE</span><small>MAKE IT HAPPEN</small></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span class="sr-only">Open menu</span></button>
       <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-        <a href="#story">The story</a>
-        <a href="#work">What I do</a>
-        <a href="#book">The book</a>
-        <a href="#lighting">Lighting packs</a>
-        <a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
+        <a href="#about">About</a><a href="#services">Services</a><a href="#portfolio">Portfolio</a><a href="#books">Books</a><a href="#contact">Contact</a><a class="nav-cta" href="#contact">Book now <span>↗</span></a>
       </nav>
     </header>
 
-    <main id="top">
+    <main>
       <section class="hero section-pad">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="eyebrow-dot"></span> The woman behind the moments</p>
-          <h1>Big ideas need someone who knows how to <em>make them happen.</em></h1>
-          <p class="hero-deck">Cara Burke is an entertainment consultant, producer, and author — the calm, capable force turning bold ideas into unforgettable moments, on stage and behind the scenes.</p>
-          <div class="hero-actions">
-            <a class="button button-dark" href="#story">Meet Cara <span>↘</span></a>
-            <a class="text-link" href="#work">Explore the work <span>↗</span></a>
-          </div>
-          <div class="hero-notes" aria-label="Areas of work">
-            <span>Jamaica</span><span>•</span><span>UK</span><span>•</span><span>Canada</span><span>•</span><span>Everywhere ideas travel</span>
-          </div>
-        </div>
-        <div class="hero-visual">
-          <div class="hero-scribble" aria-hidden="true">make<br />it<br /><strong>happen</strong></div>
-          <div class="hero-frame">
-            <img src="${portrait}" alt="Portrait of Cara Burke smiling in a black suit" />
-          </div>
-          <div class="hero-sticker">✦ <span>Miss<br />Make It<br />Happen</span></div>
-          <div class="hero-caption">A little bit of strategy.<br /><strong>A lot of heart.</strong></div>
-        </div>
+        <div class="hero-copy"><p class="eyebrow"><span class="eyebrow-dot"></span> Personal brand · production · publishing</p><h1>Bringing your vision to life. <em>Creating extraordinary experiences.</em></h1><p class="hero-deck">Cara Burke is the calm, capable force behind bold performances, meaningful stories, and the details that make a room remember.</p><div class="hero-actions"><a class="button button-burgundy" href="#services">Explore packages <span>↘</span></a><a class="text-link" href="#contact">Book a consultation <span>↗</span></a></div><div class="hero-notes"><span>Jamaica</span><b>•</b><span>UK</span><b>•</b><span>Canada</span><b>•</b><span>Everywhere ideas travel</span></div></div>
+        <div class="hero-visual"><div class="hero-glow"></div><div class="hero-frame"><img src="${portrait}" alt="Portrait of Cara Burke in a black suit" /></div><div class="hero-ribbon">CARA<br />BURKE</div><div class="hero-caption">Professional production.<br /><strong>Personal impact.</strong></div></div>
       </section>
 
-      <section class="ticker" aria-label="Cara Burke areas of work">
-        <div class="ticker-track"><div class="ticker-half">${tickerHalf}</div><div class="ticker-half" aria-hidden="true">${tickerHalf}</div></div>
-      </section>
+      <section class="brand-strip" aria-label="Brand qualities"><span>Professional & credible</span><i>✦</i><span>Creative & innovative</span><i>✦</i><span>Artist-focused & supportive</span><i>✦</i><span>Author & storyteller</span><i>✦</i><span>Premium & impactful</span></section>
 
-      <section class="story section-pad" id="story">
-        <div class="section-kicker"><span>01</span><span class="line"></span><span>The story</span></div>
-        <div class="story-grid">
-          <div class="story-heading">
-            <p class="eyebrow">More than one title</p>
-            <h2>There is always <em>more</em> to the story.</h2>
-          </div>
-          <div class="story-copy">
-            <p class="lead">Cara has built a life around making things happen for other people — artists, audiences, partners, and now, young readers.</p>
-            <p>Her work sits at the intersection of strategy and care. She can be the person in the room shaping the big idea, the person backstage fixing the small thing, or the person making sure the details land with care.</p>
-            <p>This is home for work with a little more heart in it: the ideas, stories, and experiences that stay with you.</p>
-            <a class="text-link coral-link" href="#contact">Work with Cara <span>↗</span></a>
-          </div>
-        </div>
-        <div class="story-stats">
-          <div><strong>01</strong><span>Unshakeable<br />problem solver</span></div>
-          <div><strong>03</strong><span>Home bases<br />Jamaica, UK & Canada</span></div>
-          <div><strong>∞</strong><span>Ways to turn<br />a vision real</span></div>
-        </div>
-      </section>
+      <section class="about section-pad" id="about"><div class="section-kicker"><span>01</span><span class="line"></span><span>About Cara</span></div><div class="about-grid"><div><p class="eyebrow">The woman behind the experience</p><h2>Ideas deserve a stage — and a person who knows how to <em>build it.</em></h2></div><div class="about-copy"><p class="lead">Cara Burke brings strategy, warmth, and production know-how to the moments artists and audiences remember.</p><p>From the first conversation to the final cue, she helps turn ambitious ideas into clear, compelling experiences. Her work spans entertainment production, artist support, event details, and stories that create room for young readers to see themselves.</p><a class="text-link burgundy-link" href="#contact">Work with Cara <span>↗</span></a></div></div><div class="about-stats"><div><strong>03</strong><span>Home bases<br />Jamaica, UK & Canada</span></div><div><strong>09</strong><span>Production packages<br />to shape your brief</span></div><div><strong>∞</strong><span>Ways to turn<br />a vision real</span></div></div></section>
 
-      <section class="work section-pad" id="work">
-        <div class="section-kicker light"><span>02</span><span class="line"></span><span>What I do</span></div>
-        <div class="work-intro">
-          <div><p class="eyebrow light-text">The full picture</p><h2>Different hats.<br /><em>Same energy.</em></h2></div>
-          <p>Whether it is an artist, an event, a team, or a story, Cara brings the same instinct: understand what matters, then make the path clearer.</p>
-        </div>
-        <div class="services-list">${serviceMarkup}</div>
-      </section>
+      <section class="services section-pad" id="services"><div class="section-kicker light"><span>02</span><span class="line"></span><span>Services & packages</span></div><div class="services-intro"><div><p class="eyebrow light-text">The full production picture</p><h2>Make the moment<br /><em>unforgettable.</em></h2></div><p>From lighting and visual displays to sound experiences, choose a starting point or request a custom quotation for the production your audience deserves.</p></div>${packageMarkup}<div class="custom-quote"><div><span class="eyebrow light-text">Have a brief outside the box?</span><h3>Request a custom quote.</h3></div><a class="button button-light" href="#contact">Start a conversation <span>↗</span></a></div></section>
 
-      <section class="book section-pad" id="book">
-        <div class="book-paper">
-          <div class="book-copy">
-            <div class="section-kicker"><span>03</span><span class="line"></span><span>For little dreamers</span></div>
-            <p class="eyebrow">A new chapter</p>
-            <h2>There is magic in seeing <em>yourself</em> in the story.</h2>
-            <p class="book-description">A joyful story that builds confidence, sparks imagination, and shows young readers their ideas deserve room to grow.</p>
-            <div class="placeholder-note"><span>EDITABLE DRAFT</span> Replace with the final book title, blurb, age range, cover, and purchase link when ready.</div>
-            <div class="book-actions"><a class="button button-coral" href="#contact">Be first to know <span>↗</span></a><a class="text-link" href="#contact">Book enquiries <span>↗</span></a></div>
-          </div>
-          <div class="book-art" aria-label="Placeholder book cover artwork">
-            <div class="book-sun"></div><div class="book-cloud cloud-one"></div><div class="book-cloud cloud-two"></div>
-            <div class="book-cover">
-              <div class="cover-top">A CARA BURKE STORY</div>
-              <div class="cover-title">THE<br /><em>BIG</em><br />IDEA</div>
-              <div class="cover-bottom">A story about<br />making room for wonder</div>
-              <span class="cover-star">✦</span>
-            </div>
-            <div class="book-doodle">✽</div>
-            <div class="book-tag">Book cover<br /><strong>preview</strong></div>
-          </div>
-        </div>
-      </section>
+      <section class="portfolio section-pad" id="portfolio"><div class="section-kicker"><span>03</span><span class="line"></span><span>Portfolio / gallery</span></div><div class="portfolio-heading"><div><p class="eyebrow">The experience speaks for itself</p><h2>Production with <em>presence.</em></h2></div><p>Live performances, stage lighting, visual displays, sound, and the details behind the scenes — this is where the work becomes a feeling.</p></div><div class="gallery-grid">${galleryTiles}</div><div class="portfolio-note">Portfolio imagery and approved client stories can be added here as Cara’s archive is curated.</div></section>
 
-      <section class="lighting section-pad" id="lighting">
-        <div class="lighting-heading">
-          <div class="section-kicker"><span>04</span><span class="line"></span><span>Make the room glow</span></div>
-          <p class="eyebrow">Production & event lighting</p>
-          <h2>Set the scene.<br /><em>Change the feeling.</em></h2>
-          <p>Lighting packs for the moments that need to feel bigger, warmer, and unmistakably yours — from live events to intimate productions.</p>
-        </div>
-        <div class="pack-list">
-          <article class="pack-card pack-featured"><div class="pack-meta"><span>01 / Signature</span><span>For the full picture</span></div><h3>The Spotlight Pack</h3><p>A flexible lighting setup for productions, launches, panels, and events that need the full picture.</p><div class="pack-bottom"><strong>Full production setup</strong><a href="#contact">Enquire ↗</a></div></article>
-          <article class="pack-card"><div class="pack-meta"><span>02 / Intimate</span><span>For close-up magic</span></div><h3>The Glow Pack</h3><p>Warm, flattering atmosphere for dinners, launches, intimate gatherings, and close-up moments.</p><div class="pack-bottom"><strong>Intimate event setup</strong><a href="#contact">Enquire ↗</a></div></article>
-          <article class="pack-card"><div class="pack-meta"><span>03 / Custom</span><span>For your brief</span></div><h3>The Make It Happen Pack</h3><p>A tailored production conversation for an idea with its own shape, pace, and point of view.</p><div class="pack-bottom"><strong>Custom brief</strong><a href="#contact">Enquire ↗</a></div></article>
-        </div>
-        <div class="placeholder-note dark-note"><span>EDITABLE DRAFT</span> Replace package names, exact inclusions, pricing, service area, and booking link when confirmed.</div>
-      </section>
+      <section class="books section-pad" id="books"><div class="books-heading"><div class="section-kicker"><span>04</span><span class="line"></span><span>Books & publications</span></div><p class="eyebrow">Stories, culture, family & inspiration</p><h2>The literary world of <em>Cara W. Burke.</em></h2><p>Beyond the stage, Cara creates stories and spaces for reflection, connection, and cultural pride.</p></div><div class="publication-grid">${books}</div></section>
 
-      <section class="contact section-pad" id="contact">
-        <div class="contact-panel">
-          <div class="contact-copy"><p class="eyebrow light-text">The next good idea</p><h2>Tell me what you're<br /><em>making.</em></h2><p>For collaborations, book updates, events, lighting plans, or a good idea that needs a little momentum.</p></div>
-          <div class="contact-actions">
-            <form class="contact-form" id="contact-form">
-              <div class="form-row"><label><span>Your name</span><input name="name" type="text" autocomplete="name" placeholder="Your name" required /></label><label><span>Email address</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label></div>
-              <label><span>What can Cara help with?</span><select name="topic" required><option value="" disabled selected>Choose a conversation</option><option>Children's book</option><option>Lighting packs</option><option>Events & production</option><option>Collaboration</option><option>Other</option></select></label>
-              <label><span>Tell us a little more</span><textarea name="message" rows="4" placeholder="A few details about your idea..." required></textarea></label>
-              <div class="form-submit-row"><button class="button button-coral" type="submit">Send enquiry <span>↗</span></button><p class="form-note">This draft opens your email app with the message ready to send.</p></div>
-              <p class="form-success" role="status" aria-live="polite"></p>
-            </form>
-          </div>
-        </div>
-        <div class="contact-footer"><span>© 2026 Cara Burke</span><span>Made with purpose, heart & a little sparkle ✦</span><a href="#top">Back to top ↑</a></div>
-      </section>
+      <section class="contact section-pad" id="contact"><div class="contact-panel"><div class="contact-copy"><p class="eyebrow light-text">The next good idea</p><h2>Let’s create something <em>extraordinary.</em></h2><p>Tell Cara what you’re planning, what you need, and what you want people to feel.</p><div class="contact-details"><a href="tel:+14375451666">+1 (437) 545-1666</a><a href="mailto:hello@caraburke.com">hello@caraburke.com</a></div></div><div class="contact-actions"><form class="contact-form" id="contact-form"><div class="form-row"><label><span>Full name</span><input name="name" autocomplete="name" placeholder="Your name" required /></label><label><span>Artist / company</span><input name="company" placeholder="Artist or company" /></label></div><div class="form-row"><label><span>Email address</span><input name="email" type="email" autocomplete="email" placeholder="you@example.com" required /></label><label><span>Phone / WhatsApp</span><input name="phone" type="tel" placeholder="+1 ..." /></label></div><div class="form-row"><label><span>Event date</span><input name="date" type="date" /></label><label><span>Event location / venue</span><input name="location" placeholder="City or venue" /></label></div><label><span>Service category</span><select name="category" required><option value="" disabled selected>Choose a category</option><option>Lighting packages</option><option>LED screens & visual packages</option><option>Sound packages</option><option>Books & publications</option><option>Custom production quote</option></select></label><label><span>Selected package</span><select name="package"><option value="">No package selected</option>${packageOptions}</select></label><div class="form-row"><label><span>Estimated audience</span><input name="audience" placeholder="Approximate size" /></label><label><span>Event name</span><input name="event" placeholder="Event or production" /></label></div><label><span>Additional requirements</span><textarea name="message" rows="4" placeholder="Tell us a little about the vision..."></textarea></label><button class="button button-burgundy" type="submit">Request booking <span>↗</span></button><p class="form-note">This draft opens your email app with the inquiry ready to send.</p><p class="form-success" role="status" aria-live="polite"></p></form></div></div><div class="contact-footer"><span>© 2026 Cara W. Burke</span><span>Made with purpose, heart & a little sparkle ✦</span><a href="#top">Back to top ↑</a></div></section>
     </main>
-  </div>
-`;
+  </div>`;
 
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.site-nav');
-menuToggle.addEventListener('click', () => {
-  const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-  menuToggle.setAttribute('aria-expanded', String(!expanded));
-  nav.classList.toggle('is-open', !expanded);
-});
+menuToggle.addEventListener('click', () => { const expanded = menuToggle.getAttribute('aria-expanded') === 'true'; menuToggle.setAttribute('aria-expanded', String(!expanded)); nav.classList.toggle('is-open', !expanded); });
+document.querySelectorAll('.site-nav a').forEach(link => link.addEventListener('click', () => { menuToggle.setAttribute('aria-expanded', 'false'); nav.classList.remove('is-open'); }));
+document.querySelectorAll('.package-book').forEach(button => button.addEventListener('click', () => { document.querySelector('[name="package"]').value = button.dataset.package; document.querySelector('[name="category"]').value = allPackages.find(item => item.name === button.dataset.package)?.category || ''; document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' }); }));
 
-document.querySelectorAll('.site-nav a').forEach((link) => {
-  link.addEventListener('click', () => {
-    menuToggle.setAttribute('aria-expanded', 'false');
-    nav.classList.remove('is-open');
-  });
-});
-
-const contactForm = document.querySelector('#contact-form');
-const formSuccess = document.querySelector('.form-success');
-contactForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  if (!contactForm.reportValidity()) return;
-
-  const data = new FormData(contactForm);
-  const subject = `${data.get('topic')} enquiry from ${data.get('name')}`;
-  const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\nConversation: ${data.get('topic')}\n\n${data.get('message')}`;
-  window.location.href = `mailto:hello@caraburke.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  formSuccess.textContent = 'Your email draft is ready — thank you.';
-  contactForm.reset();
-});
+document.querySelector('#contact-form').addEventListener('submit', event => { event.preventDefault(); const form = event.currentTarget; if (!form.reportValidity()) return; const data = new FormData(form); const subject = `${data.get('category')} enquiry from ${data.get('name')}`; const body = [...data.entries()].map(([key, value]) => `${key}: ${value}`).join('\n'); window.location.href = `mailto:hello@caraburke.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`; form.querySelector('.form-success').textContent = 'Your inquiry is ready to send — thank you.'; });
