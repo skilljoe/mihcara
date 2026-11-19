@@ -1,0 +1,17 @@
+[
+  {"category":"Lighting","slug":"lighting","intro":"Professional lighting that lifts a performance, whatever the room.","items":[
+    {"name":"Pacemaker","tagline":"Set the Rhythm. Light Up the Stage.","description":"An entry-level lighting solution designed for artists who want to enhance their stage presence with a professional lighting setup. Ideal for smaller performances, intimate venues, and emerging artists."},
+    {"name":"Extraordinary","tagline":"Go Beyond Ordinary.","description":"An enhanced lighting experience designed to create greater visual impact and complement an artist's performance. Ideal for concerts, showcases, and performances requiring more elaborate lighting arrangements."},
+    {"name":"Showtime Lite","tagline":"Your Moment. Your Stage. Your Showtime.","description":"A lighting package designed to deliver an engaging stage experience with a coordinated professional lighting presentation. Ideal for artists and event organizers looking for a polished performance environment."}
+  ]},
+  {"category":"LED Screens & Visual","slug":"visual","intro":"Visual displays that put the performance in the spotlight.","items":[
+    {"name":"Blink","tagline":"Capture Their Attention.","description":"A visual display package designed to enhance performances with LED screen technology. Suitable for smaller events, performances, and presentations."},
+    {"name":"Stardom","tagline":"Put Your Performance in the Spotlight.","description":"A screen package designed to create an engaging visual backdrop and enhance the overall presentation of an artist's performance. Suitable for concerts, artist showcases, and entertainment productions."},
+    {"name":"Captivate","tagline":"Create a Visual Experience They Won't Forget.","description":"A visual package designed for productions that require a strong visual presence and impactful stage presentation. Suitable for large-scale performances, concerts, and special entertainment events, subject to final equipment specifications."}
+  ]},
+  {"category":"Sound","slug":"sound","intro":"Audio that carries every beat to the back row.","items":[
+    {"name":"Your Sound","tagline":"Your Vision. Your Sound.","description":"A sound solution designed to support artists who have specific audio preferences or production requirements. The exact arrangement and included equipment will be confirmed by Cara."},
+    {"name":"Our Sound","tagline":"Professional Sound. Exceptional Experiences.","description":"A professional sound package intended to provide artists and event organizers with a coordinated audio solution. The equipment and services included will be determined by the final package specifications."},
+    {"name":"Ultimate Sound","tagline":"Feel Every Beat. Hear Every Moment.","description":"A sound package intended for performances requiring a more comprehensive audio production setup. Suitable for larger productions, subject to venue requirements and confirmed package specifications."}
+  ]}
+]
