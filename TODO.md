@@ -8,6 +8,8 @@
 - [x] Add all nine exact package names, taglines, descriptions, details panels, booking links, and custom-quote links.
 - [x] Add Portfolio category filters and honest coming-soon state without stock images or fake testimonials.
 - [x] Add all three publications, CSS cover previews, Amazon link for A Little Piece of Jamaica, and honest ordering state for the other two.
-- [x] Add progressive booking form fields, package/category query prefill, honeypot, and honest phone-confirmation fallback while delivery details are unconfigured.
+- [x] Replace the unconnected form with a direct call/booking CTA until a real endpoint and business email are supplied; preserve package/category query context and show the selected booking brief.
 - [x] Add phone click-to-call, footer links, Privacy Policy, and Booking Terms pages.
 - [x] Keep missing Cara materials explicit: biography, approved photos, technical specs, prices, portfolio media, testimonials, official book covers, ordering details, business email/social handles, and booking policies.
+
+- [x] Fix audit issues: single-active portfolio filter, readable dark-section/footer copy, portfolio italic contrast, independent package expansion, sticky navigation, footer Portfolio link, reduced home spacing, and no production-facing staging phrases.

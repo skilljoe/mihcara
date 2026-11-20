@@ -10,7 +10,7 @@ Eight directory-style HTML entry points are compiled by Vite: `/`, `/about/`, `/
 
 ## Functional decisions
 
-Services include exact brief copy for all nine packages. Package details expand inline. Booking buttons send visitors to `/contact/` with the selected package and category in the query string. The contact form reveals production fields for package, event, or custom-quote inquiries, includes a honeypot, and shows an honest phone fallback while no form endpoint or business email is configured. No checkout, cart, analytics, fake testimonials, invented specs, or unapproved contact channels are added.
+Services include exact brief copy for all nine packages. Package details expand inline. Booking buttons send visitors to `/contact/` with the selected package and category in the query string. Until a real form endpoint and business email are supplied, the contact page uses a direct call/booking CTA and carries package context from Services without presenting a dead-end form. No checkout, cart, analytics, fake testimonials, invented specs, or unapproved contact channels are added.
 
 ## Delivery
 
