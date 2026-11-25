@@ -51,7 +51,9 @@ jobs:
         run: |
           for i in $(seq 1 24); do
             if gh api "repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts" --jq '.artifacts[] | select(.name == "github-pages") | .id' | grep -q .; then
-              echo "Pages artifact is visible to the API, continuing to deploy."
+              echo "Pages artifact is visible to the Actions API. Allowing the Pages deployment API to catch up..."
+              sleep 15
+              echo "Pages artifact stabilization delay complete; continuing to deploy."
               exit 0
             fi
             echo "Pages artifact not visible yet (attempt $i of 24), waiting 5s..."
