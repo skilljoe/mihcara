@@ -2,7 +2,7 @@
 
 ## Direction
 
-Build the official six-page Cara Burke website plus Privacy Policy and Booking Terms pages inside the existing Vite repository. The mood board governs a premium system built from burgundy `#6A0D2B`, grey `#A5A5A5`, off-white `#F8F6F6`, black `#000000`, and silver `#C0C0C0`. Keep Fraunces and DM Sans, the supplied portrait, honest coming-soon states, and no stock imagery.
+Build the official six-page Cara Burke website plus Privacy Policy and Booking Terms pages inside the existing Vite repository. The mood board governs a premium system built from burgundy `#6A0D2B`, grey `#A5A5A5`, off-white `#F8F6F6`, black `#000000`, and silver `#C0C0C0`. Keep Fraunces and DM Sans, the supplied portrait, honest availability language without production-facing staging notes, and no stock imagery.
 
 ## Architecture
 
@@ -10,7 +10,7 @@ Eight directory-style HTML entry points are compiled by Vite: `/`, `/about/`, `/
 
 ## Functional decisions
 
-Services include exact brief copy for all nine packages. Package details expand inline. Booking buttons send visitors to `/contact/` with the selected package and category in the query string. The contact form reveals production fields for package, event, or custom-quote inquiries, includes a honeypot, and shows an honest phone fallback while no form endpoint or business email is configured. No checkout, cart, analytics, fake testimonials, invented specs, or unapproved contact channels are added.
+Services include exact brief copy for all nine packages. Package details expand inline. Booking buttons send visitors to `/contact/` with the selected package and category in the query string. The contact form reveals production fields for package, event, or custom-quote inquiries, includes required-field cues and a honeypot, and submits through the configured FormSubmit endpoint with a phone fallback if delivery fails. No checkout, cart, analytics, fake testimonials, invented specs, or unapproved contact channels are added.
 
 ## Delivery
 
